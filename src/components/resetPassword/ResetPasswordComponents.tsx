@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { resetPassword } from "../../Service/authService";
+import { resetPassword } from "../../Service/Auth/authService";
 import { Button, Card, Col, Container, Row, Form } from "react-bootstrap";
 
 const ResetPasswordComponents = () => {
