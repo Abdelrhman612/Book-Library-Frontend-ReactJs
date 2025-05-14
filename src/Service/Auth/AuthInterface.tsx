@@ -7,3 +7,7 @@ export interface signUp {
   email: string;
   password: string;
 }
+export interface verifyCode {
+  email: string;
+  code: string;
+}
