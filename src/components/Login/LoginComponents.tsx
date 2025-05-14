@@ -1,6 +1,7 @@
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useState } from "react";
-import { login } from "../../Service/authService";
+import { Login } from "../../Service/authService";
+import { Link } from "react-router-dom";
 
 const LoginComponents = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +10,7 @@ const LoginComponents = () => {
     e.preventDefault();
 
     try {
-      const res = await login({ email, password });
+      const res = await Login({ email, password });
       const token: string = res.data.data.token;
       localStorage.setItem("token", token);
       alert("✅ تم تسجيل الدخول بنجاح");
@@ -48,6 +49,11 @@ const LoginComponents = () => {
                 <Button variant="primary" type="submit" className="w-100">
                   دخول
                 </Button>
+                <div className="mt-3 text-center">
+                  <Link to="/reset-password" className="text-decoration-none">
+                    نسيت كلمة المرور؟
+                  </Link>
+                </div>
               </Form>
             </Card.Body>
           </Card>
