@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import axios from "axios";
-import type { login, signUp } from "./AuthInterface";
+import type { login, signUp, verifyCode } from "./AuthInterface";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const API_URL_Login = `${API_BASE_URL}/auth/sign-in`;
 const API_URL_SignUp = `${API_BASE_URL}/auth/sign-up`;
@@ -21,6 +21,6 @@ export const resetPassword = (email: string) => {
     email,
   });
 };
-export const verifyCode = (code: string) => {
-  return axios.post(API_URL_verifyCode, { code });
+export const VerifyCode = ({ email, code }: verifyCode) => {
+  return axios.post(API_URL_verifyCode, { email, code });
 };
