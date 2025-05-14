@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { resetPassword } from "../../../Service/Auth/authService";
 import { Button, Card, Col, Container, Row, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const ResetPasswordComponents = () => {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleReset = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await resetPassword(email);
       alert("تم ارسال الكود بنجاح ✅");
+      navigate("/verify-code");
     } catch {
       alert("❌ يوجد خطأ حاول مره اخرى");
     }
