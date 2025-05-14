@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Card, Col, Container, Form, Row, Button } from "react-bootstrap";
-import { SignUp } from "../../Service/authService";
+import { SignUp } from "../../Service/Auth/authService";
 
 function SignUpComponents() {
   const [name, setName] = useState("");
