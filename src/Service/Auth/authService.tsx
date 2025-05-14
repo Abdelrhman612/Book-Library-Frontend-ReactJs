@@ -13,6 +13,7 @@ export const SignUp = ({ name, email, password }: signUp) => {
     password,
   });
 };
+// eslint-disable-next-line react-refresh/only-export-components
 export const resetPassword = (email: string) => {
   axios.post(API_URL_ResetPassword, {
     email,
