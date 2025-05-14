@@ -11,3 +11,7 @@ export interface verifyCode {
   email: string;
   code: string;
 }
+export interface changePassword {
+  email: string;
+  password: string;
+}
