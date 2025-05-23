@@ -1,4 +1,4 @@
-import ResetPasswordComponents from "../../components/Auth/resetPassword/ResetPasswordComponents";
+import ResetPasswordComponents from "../../../components/Auth/resetPassword/ResetPasswordComponents";
 
 const ResetPassword = () => {
   return (
