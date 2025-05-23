@@ -1,10 +1,11 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import "./index.css";
-import Login from "./pages/Login/Login";
-import SignUp from "./pages/SignUp/SignUp";
-import ResetPassword from "./pages/ResetPassword/ResetPassword";
-import VerifyCode from "./pages/VerifyCode/VerifyCode";
-import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import Login from "./pages/Auth/Login/Login";
+import SignUp from "./pages/Auth/SignUp/SignUp";
+import ResetPassword from "./pages/Auth/ResetPassword/ResetPassword";
+import VerifyCode from "./pages/Auth/VerifyCode/VerifyCode";
+import ChangePassword from "./pages/Auth/ChangePassword/ChangePassword";
+import Book from "./pages/Book/Book";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/verify-code" element={<VerifyCode />}></Route>
         <Route path="change-password" element={<ChangePassword />}></Route>
+        <Route path="/" element={<Book />}></Route>
       </Routes>
     </BrowserRouter>
   );
