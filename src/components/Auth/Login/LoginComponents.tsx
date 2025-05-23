@@ -1,11 +1,12 @@
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Login } from "../../../Service/Auth/authService";
 
 const LoginComponents = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -13,6 +14,7 @@ const LoginComponents = () => {
       const res = await Login({ email, password });
       const token: string = res.data.data.token;
       localStorage.setItem("token", token);
+      navigate("/");
       alert("✅ تم تسجيل الدخول بنجاح");
     } catch (err) {
       console.error("Login failed:", err);
@@ -49,9 +51,12 @@ const LoginComponents = () => {
                 <Button variant="primary" type="submit" className="w-100">
                   دخول
                 </Button>
-                <div className="mt-3 text-center">
+                <div className="mt-3 text-center justify-content-between d-flex">
                   <Link to="/reset-password" className="text-decoration-none">
                     نسيت كلمة المرور؟
+                  </Link>
+                  <Link to="/signUp" className="text-decoration-none">
+                    التسجيل
                   </Link>
                 </div>
               </Form>
