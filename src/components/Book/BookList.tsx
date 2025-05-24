@@ -1,15 +1,8 @@
 import { useEffect, useState } from "react";
 import BookCard from "./BookCard";
 import { bookService } from "../../Service/Book/BookService";
-
-type Book = {
-  id: string | number;
-  title: string;
-  author: string;
-  category: string;
-  description: string;
-  image: string;
-};
+import type { Book } from "./InterFace";
+import { Container, Row } from "react-bootstrap";
 
 export const BookList = () => {
   const [books, setBooks] = useState<Book[]>([]);
@@ -26,14 +19,14 @@ export const BookList = () => {
   }, []);
 
   return (
-    <div className="container mt-5">
+    <Container className="mt-5">
       <h2 className="mb-4">قائمة الكتب</h2>
-      <div className="row">
+      <Row>
         {books.map((book) => (
           <BookCard key={book.id} {...book} />
         ))}
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 };
 
