@@ -14,7 +14,7 @@ const LoginComponents = () => {
       const res = await Login({ email, password });
       const token: string = res.data.data.token;
       localStorage.setItem("token", token);
-      navigate("/");
+      navigate("/homePage");
       alert("✅ تم تسجيل الدخول بنجاح");
     } catch (err) {
       console.error("Login failed:", err);
