@@ -2,18 +2,23 @@ import { useEffect, useState } from "react";
 import BookCard from "./BookCard";
 import { bookService } from "../../Service/Book/BookService";
 import type { Book } from "./InterFace";
-import { Container, Row, Spinner } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Spinner,
+  Button,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap";
 
 export const BookList = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    async function fetchBooks(e?: { preventDefault: () => void }) {
-      if (e) {
-        e.preventDefault();
-      }
+    async function fetchBooks() {
       try {
         const res = await bookService().getAllBooks();
         setBooks(res.data.data);
@@ -32,15 +37,22 @@ export const BookList = () => {
     )
   );
 
+  const handleSearchClick = () => {
+    setSearchTerm(inputValue);
+  };
+
   return (
     <Container className="mt-5">
-      <input
-        type="text"
-        placeholder="ابحث عن كتاب..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="form-control my-3"
-      />
+      <InputGroup className="my-3">
+        <FormControl
+          placeholder="ابحث عن كتاب..."
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <Button variant="secondary" onClick={handleSearchClick}>
+          🔍
+        </Button>
+      </InputGroup>
 
       {loading ? (
         <div className="text-center my-5">
