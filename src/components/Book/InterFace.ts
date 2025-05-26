@@ -13,3 +13,7 @@ export type BookCardProps = {
   description: string;
   image: string;
 };
+export type NavBarProps = {
+  searchTerm: string;
+  setSearchTerm: (value: string) => void;
+};
