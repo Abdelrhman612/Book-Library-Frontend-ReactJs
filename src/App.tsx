@@ -1,11 +1,11 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import "./index.css";
-import Login from "./pages/Auth/Login/Login";
-import SignUp from "./pages/Auth/SignUp/SignUp";
-import ResetPassword from "./pages/Auth/ResetPassword/ResetPassword";
-import VerifyCode from "./pages/Auth/VerifyCode/VerifyCode";
-import ChangePassword from "./pages/Auth/ChangePassword/ChangePassword";
+import Login from "./pages/Auth/Login";
+import ResetPassword from "./pages/Auth/ResetPassword";
+import ChangePassword from "./pages/Auth/ChangePassword";
 import Book from "./pages/Book/Book";
+import SignUp from "./pages/Auth/SignUp";
+import VerifyCode from "./pages/Auth/VerifyCode";
 
 function App() {
   return (
