@@ -1,4 +1,4 @@
-import VerifyCodeComponents from "../../../components/Auth/VerifyCode/VerifyCodeComponents";
+import VerifyCodeComponents from "../../../components/Auth/VerifyCodeComponents";
 
 const VerifyCode = () => {
   return <VerifyCodeComponents />;

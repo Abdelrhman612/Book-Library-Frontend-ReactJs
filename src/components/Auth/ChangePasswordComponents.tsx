@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChangePassword } from "../../../Service/Auth/authService";
+import { ChangePassword } from "../../Service/Auth/authService";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 
 const ChangePasswordComponents = () => {

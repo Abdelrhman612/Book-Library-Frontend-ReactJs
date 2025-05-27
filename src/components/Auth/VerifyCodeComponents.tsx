@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { VerifyCode } from "../../../Service/Auth/authService";
+import { VerifyCode } from "../../Service/Auth/authService";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 
 function VerifyCodeComponents() {
