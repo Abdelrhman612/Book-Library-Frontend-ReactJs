@@ -1,7 +1,5 @@
-import ChangePasswordComponents from "../../components/Auth/ChangePasswordComponents";
-
+import ChangePasswordPage from "../../components/Auth/ChangePassword/ChangePasswordPage.tsx";
 const ChangePassword = () => {
-  return <ChangePasswordComponents />;
+  return <ChangePasswordPage />;
 };
-
 export default ChangePassword;
