@@ -10,6 +10,17 @@ export const bookService = () => {
       headers: { Authorization: `Bearer ${token}` },
     });
   };
+  const createBook = (newBook: {
+    title: string;
+    author: string;
+    category: string;
+    description: string;
+    image: string;
+  }) => {
+    return axios.post(API_URL_Books, newBook, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  };
 
-  return { getAllBooks };
+  return { getAllBooks, createBook };
 };
