@@ -43,6 +43,21 @@ export const BookList = () => {
   const handleSearchClick = () => {
     setSearchTerm(inputValue);
   };
+  const handleDelete = async (id: string) => {
+    const confirmDelete = window.confirm(
+      "هل أنت متأكد أنك تريد حذف هذا الكتاب؟"
+    );
+    if (!confirmDelete) return;
+
+    try {
+      await bookService().deleteBook(id);
+      setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
+      alert("تم حذف الكتاب بنجاح!");
+    } catch (error) {
+      console.error("حدث خطأ أثناء الحذف:", error);
+      alert("حدث خطأ، لم يتم حذف الكتاب.");
+    }
+  };
 
   return (
     <Container className="mt-5">
@@ -92,6 +107,7 @@ export const BookList = () => {
                   setBookToEdit(book);
                   setShowForm(true);
                 }}
+                onDelete={() => handleDelete(String(book.id))}
               />
             ))
           ) : (
