@@ -1,40 +1,73 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { bookService } from "../../Service/Book/BookService";
+import type { Book } from "./InterFace";
 
 interface BookFormProps {
   show: boolean;
   onClose: () => void;
+  bookToEdit?: Book | null;
 }
 
-export const BookForm = ({ show, onClose }: BookFormProps) => {
+export const BookForm = ({ show, onClose, bookToEdit }: BookFormProps) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
 
+  useEffect(() => {
+    if (bookToEdit) {
+      setTitle(bookToEdit.title);
+      setAuthor(bookToEdit.author);
+      setCategory(bookToEdit.category);
+      setDescription(bookToEdit.description);
+      setImage(bookToEdit.image);
+    } else {
+      setTitle("");
+      setAuthor("");
+      setCategory("");
+      setDescription("");
+      setImage("");
+    }
+  }, [bookToEdit, show]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
-      await bookService().createBook({
-        title,
-        author,
-        category,
-        description,
-        image,
-      });
-      alert("تم إضافة الكتاب بنجاح!");
+      if (bookToEdit) {
+        await bookService().updateBook(String(bookToEdit.id), {
+          title,
+          author,
+          category,
+          description,
+          image,
+        });
+        alert("تم تحديث الكتاب بنجاح!");
+      } else {
+        await bookService().createBook({
+          title,
+          author,
+          category,
+          description,
+          image,
+        });
+        alert("تم إضافة الكتاب بنجاح!");
+      }
       onClose();
     } catch (error) {
-      console.error("خطأ في الإضافة:", error);
+      console.error("خطأ في العملية:", error);
+      alert("حدث خطأ، حاول مرة أخرى.");
     }
   };
 
   return (
     <Modal show={show} onHide={onClose}>
       <Modal.Header closeButton>
-        <Modal.Title>إضافة كتاب جديد</Modal.Title>
+        <Modal.Title>
+          {bookToEdit ? "تعديل الكتاب" : "إضافة كتاب جديد"}
+        </Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
@@ -90,10 +123,11 @@ export const BookForm = ({ show, onClose }: BookFormProps) => {
           </Form.Group>
 
           <Button variant="primary" type="submit">
-            حفظ
+            {bookToEdit ? "تحديث" : "حفظ"}
           </Button>
         </Form>
       </Modal.Body>
+
       <Modal.Footer>
         <Button variant="secondary" onClick={onClose}>
           إلغاء
