@@ -3,6 +3,7 @@ import type { Book } from "./InterFace";
 
 interface BookCardProps extends Book {
   onEdit: () => void;
+  onDelete?: () => void;
 }
 
 const BookCard = ({
@@ -12,6 +13,7 @@ const BookCard = ({
   description,
   image,
   onEdit,
+  onDelete,
 }: BookCardProps) => {
   return (
     <Card className="mb-3" style={{ maxWidth: "350px" }}>
@@ -28,6 +30,9 @@ const BookCard = ({
         <Card.Text>{description}</Card.Text>
         <Button variant="warning" onClick={onEdit}>
           تعديل
+        </Button>
+        <Button variant="danger" onClick={onDelete}>
+          حذف
         </Button>
       </Card.Body>
     </Card>
