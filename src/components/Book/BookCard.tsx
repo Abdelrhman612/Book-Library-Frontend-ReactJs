@@ -1,10 +1,5 @@
 import { Card, Button } from "react-bootstrap";
-import type { Book } from "./InterFace";
-
-interface BookCardProps extends Book {
-  onEdit: () => void;
-  onDelete?: () => void;
-}
+import type { BookCardProps } from "./InterFace";
 
 const BookCard = ({
   title,
@@ -28,12 +23,14 @@ const BookCard = ({
           {author} - {category}
         </Card.Subtitle>
         <Card.Text>{description}</Card.Text>
-        <Button variant="warning" onClick={onEdit}>
-          تعديل
-        </Button>
-        <Button variant="danger" onClick={onDelete}>
-          حذف
-        </Button>
+        <div className="d-flex justify-content-between">
+          <Button variant="warning" onClick={onEdit}>
+            تعديل
+          </Button>
+          <Button variant="danger" onClick={onDelete}>
+            حذف
+          </Button>
+        </div>
       </Card.Body>
     </Card>
   );
