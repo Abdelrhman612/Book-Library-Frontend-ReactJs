@@ -49,7 +49,6 @@ const ChangePasswordComponents = () => {
                     className="rounded-pill bg-dark text-light border-0"
                   />
                 </Form.Group>
-
                 <Form.Group className="mb-4">
                   <Form.Label className="fw-semibold text-light">
                     كلمة المرور الجديدة
@@ -64,7 +63,6 @@ const ChangePasswordComponents = () => {
                     className="rounded-pill bg-dark text-light border-0"
                   />
                 </Form.Group>
-
                 <Button
                   variant="primary"
                   type="submit"
