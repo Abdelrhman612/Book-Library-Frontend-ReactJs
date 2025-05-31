@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { resetPassword } from "../../../Service/Auth/authService";
+
 import { Button, Card, Col, Container, Row, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { resetPassword } from "../../Service/Auth/authService";
 
 const ResetPasswordComponents = () => {
   const [email, setEmail] = useState("");
