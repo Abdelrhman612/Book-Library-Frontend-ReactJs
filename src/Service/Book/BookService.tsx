@@ -21,6 +21,20 @@ export const bookService = () => {
       headers: { Authorization: `Bearer ${token}` },
     });
   };
+  const updateBook = (
+    id: string,
+    updatedBook: {
+      title: string;
+      author: string;
+      category: string;
+      description: string;
+      image: string;
+    }
+  ) => {
+    return axios.patch(`${API_URL_Books}/${id}`, updatedBook, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  };
 
-  return { getAllBooks, createBook };
+  return { getAllBooks, createBook, updateBook };
 };
