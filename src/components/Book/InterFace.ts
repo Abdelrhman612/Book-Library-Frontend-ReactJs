@@ -12,8 +12,6 @@ export type BookCardProps = {
   category: string;
   description: string;
   image: string;
-};
-export type NavBarProps = {
-  searchTerm: string;
-  setSearchTerm: (value: string) => void;
+  onEdit: () => void;
+  onDelete?: () => void;
 };
