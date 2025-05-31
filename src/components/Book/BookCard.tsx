@@ -1,31 +1,36 @@
-import { Card, Col, Image } from "react-bootstrap";
-import type { BookCardProps } from "./InterFace";
+import { Card, Button } from "react-bootstrap";
+import type { Book } from "./InterFace";
+
+interface BookCardProps extends Book {
+  onEdit: () => void;
+}
+
 const BookCard = ({
   title,
   author,
   category,
   description,
   image,
+  onEdit,
 }: BookCardProps) => {
   return (
-    <Col className="col-md-4 mb-4">
-      <Card className="card h-100 shadow-sm">
-        <Image
-          src={image}
-          className="card-img-top"
-          alt={title}
-          style={{ height: "300px", objectFit: "cover" }}
-        />
-        <Card.Body>
-          <h5 className="card-title">{title}</h5>
-          <h6 className="card-subtitle mb-2 text-muted">{author}</h6>
-          <Card.Text>
-            <strong>التصنيف:</strong> {category}
-          </Card.Text>
-          <Card.Text>{description}</Card.Text>
-        </Card.Body>
-      </Card>
-    </Col>
+    <Card className="mb-3" style={{ maxWidth: "350px" }}>
+      <Card.Img
+        variant="top"
+        src={image}
+        style={{ height: "200px", objectFit: "cover" }}
+      />
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">
+          {author} - {category}
+        </Card.Subtitle>
+        <Card.Text>{description}</Card.Text>
+        <Button variant="warning" onClick={onEdit}>
+          تعديل
+        </Button>
+      </Card.Body>
+    </Card>
   );
 };
 
