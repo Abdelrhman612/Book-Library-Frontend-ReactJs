@@ -8,7 +8,6 @@ interface BookFormProps {
   onClose: () => void;
   bookToEdit?: Book | null;
 }
-
 export const BookForm = ({ show, onClose, bookToEdit }: BookFormProps) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -69,7 +68,6 @@ export const BookForm = ({ show, onClose, bookToEdit }: BookFormProps) => {
           {bookToEdit ? "تعديل الكتاب" : "إضافة كتاب جديد"}
         </Modal.Title>
       </Modal.Header>
-
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
