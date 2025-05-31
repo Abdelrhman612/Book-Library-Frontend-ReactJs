@@ -35,6 +35,11 @@ export const bookService = () => {
       headers: { Authorization: `Bearer ${token}` },
     });
   };
+  const deleteBook = (id: string) => {
+    return axios.delete(`${API_URL_Books}/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  };
 
-  return { getAllBooks, createBook, updateBook };
+  return { getAllBooks, createBook, updateBook, deleteBook };
 };
