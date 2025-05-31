@@ -10,12 +10,14 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
+import BookForm from "./BookForm";
 
 export const BookList = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     async function fetchBooks() {
@@ -44,6 +46,10 @@ export const BookList = () => {
   return (
     <Container className="mt-5">
       <InputGroup className="my-3">
+        <Button variant="success" onClick={() => setShowForm(true)}>
+          ➕ أضف كتاب
+        </Button>
+        <BookForm show={showForm} onClose={() => setShowForm(false)} />
         <FormControl
           placeholder="ابحث عن كتاب..."
           value={inputValue}
@@ -53,7 +59,6 @@ export const BookList = () => {
           🔍
         </Button>
       </InputGroup>
-
       {loading ? (
         <div className="text-center my-5">
           <Spinner animation="border" role="status" />
