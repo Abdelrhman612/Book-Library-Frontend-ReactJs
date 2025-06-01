@@ -10,7 +10,7 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
-import BookForm from "./BookForm";
+import BookFormModal from "./BookForm/BookFormModal";
 
 export const BookList = () => {
   const [books, setBooks] = useState<Book[]>([]);
@@ -19,6 +19,7 @@ export const BookList = () => {
   const [inputValue, setInputValue] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [bookToEdit, setBookToEdit] = useState<Book | null>(null);
+
   const fetchBooks = async () => {
     setLoading(true);
     try {
@@ -30,6 +31,7 @@ export const BookList = () => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchBooks();
   }, []);
@@ -43,6 +45,7 @@ export const BookList = () => {
   const handleSearchClick = () => {
     setSearchTerm(inputValue);
   };
+
   const handleDelete = async (id: string) => {
     const confirmDelete = window.confirm(
       "هل أنت متأكد أنك تريد حذف هذا الكتاب؟"
@@ -72,15 +75,6 @@ export const BookList = () => {
           ➕ أضف كتاب
         </Button>
 
-        <BookForm
-          show={showForm}
-          onClose={() => {
-            setShowForm(false);
-            fetchBooks();
-          }}
-          bookToEdit={bookToEdit ? bookToEdit : undefined}
-        />
-
         <FormControl
           placeholder="ابحث عن كتاب..."
           value={inputValue}
@@ -90,6 +84,15 @@ export const BookList = () => {
           🔍
         </Button>
       </InputGroup>
+
+      <BookFormModal
+        show={showForm}
+        onClose={() => {
+          setShowForm(false);
+          fetchBooks();
+        }}
+        bookToEdit={bookToEdit}
+      />
 
       {loading ? (
         <div className="text-center my-5">
