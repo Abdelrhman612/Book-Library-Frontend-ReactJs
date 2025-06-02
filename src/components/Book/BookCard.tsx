@@ -23,7 +23,6 @@ const BookCard = ({
           {author} - {category}
         </Card.Subtitle>
         <Card.Text>{description}</Card.Text>
-
         <div className="d-flex justify-content-between">
           <Button variant="warning" onClick={onEdit}>
             تعديل
