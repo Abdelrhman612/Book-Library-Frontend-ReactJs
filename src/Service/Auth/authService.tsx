@@ -6,7 +6,7 @@ import type {
   signUp,
   verifyCode,
 } from "./AuthInterface";
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = process.env.VITE_API_BASE_URL;
 const API_URL_Login = `${API_BASE_URL}/auth/sign-in`;
 const API_URL_SignUp = `${API_BASE_URL}/auth/sign-up`;
 const API_URL_ResetPassword = `${API_BASE_URL}/auth/Reset-Password`;
